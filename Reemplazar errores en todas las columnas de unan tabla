@@ -1,0 +1,10 @@
+// Muy útil cuando hay campos #N/A en una celda de excel por ejemplo
+// Fuente: https://stackoverflow.com/questions/39299331/replace-all-error-values-of-all-columns-after-importing-datas-while-keeping-the
+Al tener un campo de tipo tabla , agregar una custom column con este codigo
+
+let
+    src = [TablaALimpiar],
+    cols = Table.ColumnNames(src),
+    replace = Table.ReplaceErrorValues(src, List.Transform(cols, each {_, "!"}))
+in
+    replace
