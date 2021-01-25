@@ -1,0 +1,6 @@
+=Date.EndOfMonth([fecha])-Duration.From(
+     Number.Mod(Date.DayOfWeek(Date.EndOfMonth([fecha]),Day.Monday)+1,7))
+
+Tecnica Original de Excel, disponible en:
+https://www.excelarticles.com/excelbook/find_the_last_sunday_of_the_month.html
+
