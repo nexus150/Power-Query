@@ -1,0 +1,10 @@
+let
+    HoraActual = Time.From(DateTime.LocalNow()),
+    HoraAlMinuto = #time(Time.Hour(HoraActual),Time.Minute(HoraActual),0),
+    HoraReferencia = #time(6,0,0),
+    Diferencia = if(HoraAlMinuto >= HoraReferencia) then Number.From(HoraAlMinuto - HoraReferencia) 
+        else  (Number.Abs(Number.From(#time(23,59,0) - HoraReferencia)) + Number.Abs(Number.From((HoraAlMinuto - #time(0,0,0) ) + #duration(0,0,1,0) )))  ,
+    Intervalos = (Diferencia) * 24 * 60,
+    Retorno = List.Times(HoraReferencia, Intervalos + 1 , #duration(0,0,1,0))
+in
+Retorno
