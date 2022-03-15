@@ -1,0 +1,19 @@
+Ajustar movimientos / transacciones horarias de acuerdo a la hora de verano de España.
+
+#"Personalizada agregada" = Table.AddColumn(#"Tipo cambiado2", "Domingo final de mes", each Date.EndOfMonth([fecha])-Duration.From(Number.Mod(Date.DayOfWeek(Date.EndOfMonth([fecha]),Day.Monday)+1,7))),
+#"Personalizada agregada1" = Table.AddColumn(#"Personalizada agregada", "Hora prod", 
+each 
+if Date.Month([fecha]) = 3 then
+  if [Domingo final de mes] = [fecha] then
+    if Time.Hour([hora]) > 1 then Time.Hour([hora]) else Time.Hour([hora]) + 1
+  else
+    Time.Hour([hora]) + 1
+else
+if Date.Month([fecha]) = 10 then
+  if [Domingo final de mes] = [fecha] then
+    if Time.Hour([hora]) > 1 and DateTimeZone.ZoneHours([datetime]) = 1 then Time.Hour([hora]) + 2
+    else Time.Hour([hora]) + 1
+  else
+    Time.Hour([hora]) + 1
+else
+Time.Hour([hora]) + 1),
