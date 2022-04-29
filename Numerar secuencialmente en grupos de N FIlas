@@ -1,3 +1,6 @@
 // Esta expresión permite numerar filas por grupos, por ejemplo de 10 en 10, las primeras 10 filas tendrían el nro 1 las siguientes 10 el numero 2, etc
 // cambiando el numero 10 por otro se cambia el tamaño de cada grupo
-Table.AddColumn(#"Texto recortado", "Numero de grupos", each ([Índice] - Number.Mod([Índice],10))/10 )
+Table.AddColumn(#"Texto recortado", "Personalizado", each ([Índice] - Number.Mod([Índice],10))/10 )
+
+// utilizando solo el Nuumber.Mod obtenemos las filas numeradas secuencialmente de 1 a n, por ejemplo de 1 a 3 quedaría 1,2,3,1,2,3,1,2,3,1,2,3
+Table.AddColumn(#"Texto recortado", "Personalizado", each ( Number.Mod([Índice],10))/10 )
