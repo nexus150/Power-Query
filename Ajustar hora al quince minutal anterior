@@ -1,0 +1,4 @@
+Custom =  #time(Time.Hour([Hora]),
+    Number.IntegerDivide(Time.Minute([Hora]),15) * 15,
+0 )
+
