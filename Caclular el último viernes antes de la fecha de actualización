@@ -1,0 +1,4 @@
+let
+    Origen = Date.From(Date.AddDays(DateTime.LocalNow(),-Date.DayOfWeek(DateTime.LocalNow(),5)))
+in
+    Origen
