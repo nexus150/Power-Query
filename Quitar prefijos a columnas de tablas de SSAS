@@ -1,0 +1,8 @@
+Table.TransformColumnNames( 
+
+    AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/Pruebas%20PPU", "03. Financial Reports", [Query="evaluate Account", Implementation="2.0"]) //Esta es la query DAX contra un dataset
+    ,   
+    each Text.BetweenDelimiters(_, "[", "]")
+   
+)
+
