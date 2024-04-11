@@ -1,0 +1,2 @@
+each [msfp_start_hour],each [msfp_start_hour] - #duration(0,0,0,Time.Second([msfp_start_hour]))
+= Table.ReplaceValue(#"Columnas con nombre cambiado1",each [Hora de invitación],each [Hora de invitación] - #duration(0,0,0,Time.Second([Hora de invitación])),Replacer.ReplaceValue,{"Hora de invitación"})
