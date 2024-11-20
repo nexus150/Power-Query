@@ -1,0 +1,11 @@
+(tabla as table, tabla_origen as text) as table =>
+let
+  Mapping_1 = Table.SelectRows(Mapping, each ([Origen] = tabla_origen)),
+  Mapping_2 = Table.SelectColumns(Mapping_1, {"Original","Nombre Negocio" }),
+  #"renombrar" = List.Zip ( Table.ToColumns ( Mapping_2 ) ),
+  final = Table.RenameColumns( tabla, #"renombrar") 
+in
+  final
+
+//La tabla de mapeo puede tener las columnas que se requieran, pero obligatoriamente tienen que estar "Original" y "Nombre Negocio". igual se puede cambiar el el paso Mapping_2
+// Y en este caso en el Mapping está la info para todas las tablas que lo requieran, con lo cual en el paso Mapping_1 se filtra a sólo la tabla que queremos cuando llamamos la función
